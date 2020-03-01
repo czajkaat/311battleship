@@ -24,13 +24,13 @@ public class View {
     
     //The following method draws the board for the text
     public void drawTextBoard() {
-    	for(int row=0; row<height; row++) {
+    	for(int row=height-1; row>=0; row--) {
     		for(int column=0; column<width; column++) {
     			if(board[column][row] == 'e') {
                     System.out.print("[ ] ");
     			}
     			else {
-    				System.out.print(board[column][row]+"  ");
+    				System.out.print("[" + board[column][row]+"] ");
     			}
     		}
     		System.out.println();
@@ -42,4 +42,11 @@ public class View {
     	System.out.println();
     }
 	
+    public void displayWinner(char c) {
+    	if(c == 'c') {
+    		System.out.println("Cats Game");
+    	} else {
+    		System.out.println( c + " Wins!!");
+    	}
+    }
 }
