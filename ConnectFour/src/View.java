@@ -3,6 +3,7 @@ package projectjava;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Scanner;
 
 public class View {
 
@@ -24,8 +25,10 @@ public class View {
     	c4.drawTextBoard();
     }
     
-    public int getMove(int column) {
-		
+    public int getMove() {
+    	Scanner in = new Scanner(System.in);
+		int column = in.nextInt();
+		System.out.println("Pick a row 1-7: " + column);
     	return column;
     }
     
@@ -33,7 +36,7 @@ public class View {
     public void drawTextBoard() {
     	for(int row=0; row<height; row++) {
     		for(int column=0; column<width; column++) {
-    			if(board[column][row] == 0) {
+    			if(board[column][row] == 'e') {
                     System.out.print("[ ] ");
     			}
     			else {
