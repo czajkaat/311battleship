@@ -57,7 +57,6 @@ public class Model {
 	 * 			'x' for a player 1 win, 'o' for a player 2 win
 	 */
 	public char gameState() {
-		char player = turn();
 		//Row Win
 		for(int row = 0;row < 6 ;row++) {
 			for(int column = 0;column < 4; column++) {
@@ -65,7 +64,7 @@ public class Model {
 					if(board[column][row] == board[column+1][row])
 						if(board[column][row] == board[column+2][row])
 							if(board[column][row] == board[column+3][row])
-								return player;
+								return board[column][row];
 				}
 			}
 		}
@@ -76,7 +75,7 @@ public class Model {
 					if(board[column][row] == board[column][row+1])
 						if(board[column][row] == board[column][row+2])
 							if(board[column][row] == board[column][row+3])
-								return player;
+								return board[column][row];
 				}
 			}
 		}
@@ -87,7 +86,7 @@ public class Model {
 					if(board[column][row] == board[column+1][row+1])
 						if(board[column][row] == board[column+2][row+2])
 							if(board[column][row] == board[column+3][row+3])
-								return player;
+								return board[column][row];
 				}
 			}
 		}
@@ -98,7 +97,7 @@ public class Model {
 					if(board[column][row] == board[column-1][row+1])
 						if(board[column][row] == board[column-2][row+2])
 							if(board[column][row] == board[column-3][row+3])
-								return player;
+								return board[column][row];
 				}
 			}
 		}
