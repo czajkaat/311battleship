@@ -12,19 +12,10 @@ public class View {
     char[][] board;
     int moves;
     
-    //this must be taken out before turning in
-    public View(){
-        board=new char[width][height];
-        moves=0;
-    }
     
-    //don't actually need this main method, take out before end
-    public static void main(String args[])throws IOException{
-    	System.out.println("Yes");
-    	View c4=new View();
-    	c4.drawTextBoard();
-    }
     
+    
+    //This method gets the user input for which column they choose to place their peice
     public int getMove() {
     	Scanner in = new Scanner(System.in);
 		int column = in.nextInt();
