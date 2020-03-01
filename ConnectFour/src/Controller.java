@@ -17,11 +17,12 @@ public class Controller {
 		
 		// Initiate variables in Model class
 		Model game = new Model();
-		char[][] gameBoard = game.getBoard();
-		int turn = 1;
+		
+		char turn = game.turn();
+		
 		// Game Loops until winner is determined
-		while(!game.hasWinner())) {
-			display.board = 
+		while(game.gameState() == 'i') {
+			display.board = game.returnBoard();
 			
 			// Display the current board
 			if (viewChoice == 1) {
@@ -29,19 +30,17 @@ public class Controller {
 			}
 			
 			// Display which player's turn
-			if (turn % 2 == 0) {
-				// Player 2's turn
-				
-			} else {
-				//Player 1's turn
-				
-			}
+			turn = game.turn();
+			
 			
 			// Get user input
+			int column = display.getMove() - 1;
 			
 			
 			// Update game board
-			
+			if (!game.playPiece(column)) {
+				// Display error
+			}
 		}
 		
 		// Display winner
