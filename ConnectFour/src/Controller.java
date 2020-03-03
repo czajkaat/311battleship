@@ -30,9 +30,6 @@ public class Controller {
 				
 			}
 			
-			// Display which player's turn
-			turn = game.turn();
-			
 			
 			// Get user input
 			int column = display.getMove() - 1;
