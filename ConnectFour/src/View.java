@@ -1,18 +1,25 @@
 
 import java.io.BufferedReader;
+import javax.swing.*;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Scanner;
+import java.awt.*;
 
 public class View {
 
 	final int width=7;
     final int height=6;
-    char[][] board;
+    private char[][] board;
     int moves;
     
+    public char[][] getBoard() {
+    	return board;
+    }
     
-    
+    public void setBoard(char[][] b) {
+    	board = b;
+    }
     
     //This method gets the user input for which column they choose to place their peice
     public int getMove() {

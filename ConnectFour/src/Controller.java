@@ -22,12 +22,14 @@ public class Controller {
 		
 		// Game Loops until winner is determined
 		while(game.gameState() == 'e') {
-			display.board = game.returnBoard();
+			display.setBoard(game.returnBoard());
 			
 			// Display the current board
 			if (viewChoice == 1) {
 				display.drawTextBoard();
 				
+			} else {
+				// display.drawGUI();
 			}
 			
 			
@@ -42,7 +44,7 @@ public class Controller {
 		}
 		
 		// Display winner
-		display.board = game.returnBoard();
+		display.setBoard(game.returnBoard());
 		if (viewChoice == 1) {
 			display.drawTextBoard();
 			
