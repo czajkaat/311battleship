@@ -9,6 +9,9 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -19,18 +22,20 @@ import javax.swing.SwingConstants;
 import javax.swing.JButton;
 
 
-public class View extends JFrame{
+public class View extends JFrame implements ActionListener{
 
 	final int width=7;
     final int height=6;
-    char[][] board;
-    int moves;
-    JPanel boardPanel = new JPanel();
-    JPanel labelPanel = new JPanel();
-    JPanel buttonPanel = new JPanel();
-    JLabel c4Label = new JLabel("Connect 4");
-    JLabel nameLabel = new JLabel("By: Chris Santos, Sean Morton, Adrian Czajka");
-    char[][] charArray;
+    private char[][] board;
+    private int moves;
+    private JPanel boardPanel = new JPanel();
+    private JPanel labelPanel = new JPanel();
+    private JPanel buttonPanel = new JPanel();
+    private JLabel c4Label = new JLabel("Connect 4");
+    private JLabel nameLabel = new JLabel("By: Chris Santos, Sean Morton, Adrian Czajka");
+    private char[][] charArray;
+    private JButton[] buttonArr = new JButton[7];
+    private int columnChoice = -1;
     
     //This method gets the board from the other two classes
     public char[][] getBoard() {
@@ -76,6 +81,8 @@ public class View extends JFrame{
     	for (int i = 1; i<width+1; i++) {
     		JButton b = new JButton("Column " + i);
     		b.setPreferredSize(new Dimension(95, 25));
+    		b.addActionListener(this);
+    		buttonArr[i-1] = b;
     		buttonPanel.add(b);
     	}
     	
@@ -151,6 +158,26 @@ public class View extends JFrame{
     		
     	}
     }
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		JButton b = (JButton) arg0.getSource();
+		for (int i = 0; i < buttonArr.length; i++) {
+			if (buttonArr[i].equals(b)) {
+				columnChoice = i;
+				return;
+			}
+		}
+		
+	}
+	
+	public int getColumnChoice() {
+		return columnChoice;
+	}
+	
+	public void resetColumnChoice() {
+		columnChoice = -1;
+	}
     
     
 }

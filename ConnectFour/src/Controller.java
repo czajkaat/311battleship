@@ -42,13 +42,23 @@ public class Controller {
 			
 			
 			// Get user input
-			int column = display.getMove() - 1;
+			int column = -1;
+			if (viewChoice == 1) {
+				column = display.getMove() - 1;
+			} else {
+				while(display.getColumnChoice() == -1) {
+					System.out.println();
+					column = display.getColumnChoice();
+				}
+			}
 			
 			
 			// Update game board
 			if (!game.playPiece(column)) {
 				// Display error
 			}
+			
+			display.resetColumnChoice();
 		}
 		
 		// Display winner
