@@ -20,6 +20,14 @@ public class Controller {
 		game.newGame();
 		char turn = game.turn();
 		
+		// Display the current board
+		if (viewChoice == 1) {
+			display.drawTextBoard();
+			
+		} else {
+			display.drawWindow();
+		}
+		
 		// Game Loops until winner is determined
 		while(game.gameState() == 'e') {
 			display.setBoard(game.returnBoard());
@@ -29,7 +37,7 @@ public class Controller {
 				display.drawTextBoard();
 				
 			} else {
-				// display.drawGUI();
+				display.repaint();
 			}
 			
 			
@@ -48,6 +56,8 @@ public class Controller {
 		if (viewChoice == 1) {
 			display.drawTextBoard();
 			
+		} else {
+			display.repaint();
 		}
 		char winner = game.gameState();
 		
