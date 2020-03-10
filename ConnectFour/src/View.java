@@ -16,6 +16,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.LayoutStyle;
 import javax.swing.SwingConstants;
+import javax.swing.JButton;
+
 
 public class View extends JFrame{
 
@@ -23,9 +25,9 @@ public class View extends JFrame{
     final int height=6;
     char[][] board;
     int moves;
-    JPanel p = new JPanel();
     JPanel boardPanel = new JPanel();
     JPanel labelPanel = new JPanel();
+    JPanel buttonPanel = new JPanel();
     JLabel c4Label = new JLabel("Connect 4");
     JLabel nameLabel = new JLabel("By: Chris Santos, Sean Morton, Adrian Czajka");
     char[][] charArray;
@@ -42,7 +44,7 @@ public class View extends JFrame{
     
     //This method creates the window.
     public void drawWindow() {
-    	this.setSize(750, 800);
+    	this.setSize(718, 900);
     	this.setTitle("Connect 4 Game");
     	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     	charArray = board;    	
@@ -53,19 +55,31 @@ public class View extends JFrame{
     //This method adds the components to the window, in order to paint the board.
     public void addComps() {
     	connectComponent cc = new connectComponent ();
-    	cc.setPreferredSize(new Dimension(600,700));
+    	cc.setPreferredSize(new Dimension(500,625));
     	cc.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-    	labelPanel.setLayout(new GridLayout(2,1));
+    	buttonPanel.setPreferredSize(new Dimension(750, 100));
+    	labelPanel.setLayout(new GridLayout(3,1));
     	labelPanel.setPreferredSize(new Dimension(600, 100));
     	c4Label.setHorizontalAlignment(SwingConstants.CENTER);
     	nameLabel.setHorizontalAlignment(SwingConstants.CENTER);
     	labelPanel.add(c4Label);
     	labelPanel.add(nameLabel);
     	cc.add(boardPanel);
+    	compButton();
     	this.add(cc, BorderLayout.NORTH);
+    	this.add(buttonPanel, BorderLayout.CENTER);
     	this.add(labelPanel, BorderLayout.SOUTH);
     }
     
+    public void compButton() {
+    	
+    	for (int i = 1; i<width+1; i++) {
+    		JButton b = new JButton("Column " + i);
+    		b.setPreferredSize(new Dimension(95, 25));
+    		buttonPanel.add(b);
+    	}
+    	
+    }
     
     //This method gets the user input for which column they choose to place their peice
     public int getMove() {
@@ -137,6 +151,7 @@ public class View extends JFrame{
     		
     	}
     }
+    
     
 }
 
