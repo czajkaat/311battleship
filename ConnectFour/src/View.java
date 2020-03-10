@@ -1,4 +1,3 @@
-package testyboi;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -43,7 +42,7 @@ public class View extends JFrame{
     
     //This method creates the window.
     public void drawWindow() {
-    	this.setSize(800, 800);
+    	this.setSize(750, 800);
     	this.setTitle("Connect 4 Game");
     	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     	charArray = board;    	
@@ -57,7 +56,7 @@ public class View extends JFrame{
     	cc.setPreferredSize(new Dimension(600,700));
     	cc.setBorder(BorderFactory.createLineBorder(Color.BLACK));
     	labelPanel.setLayout(new GridLayout(2,1));
-    	labelPanel.setPreferredSize(new Dimension(700, 100));
+    	labelPanel.setPreferredSize(new Dimension(600, 100));
     	c4Label.setHorizontalAlignment(SwingConstants.CENTER);
     	nameLabel.setHorizontalAlignment(SwingConstants.CENTER);
     	labelPanel.add(c4Label);
@@ -109,29 +108,33 @@ public class View extends JFrame{
     public class connectComponent extends JComponent{
     	int x;
     	int y;
+    
   
     	public void paint (Graphics g) {
-    		for(int row=height-1; row>=0; row--) {
+    		int row2=height-1;
+    		for(int row=0; row<height; row++) {
         		for(int column=0; column<width; column++) {
-        			if(board[column][row] == 'e' || board[column][row] == 'o' ||board[column][row] == 'x') {
-        				g.setColor(Color.BLACK);
-        				g.drawRect(x, y, 100, 100);
-            			x = 100*column + 30;
-            			y = 100*row + 30;
-            			g.setColor(Color.WHITE);
-            			g.fillRect(x+1, y+1, 99, 99);
-        			}
         			
-        			if(board[column][row] == 'x') {
+        			g.setColor(Color.BLACK); 
+        			g.drawRect(x, y, 100, 100);
+            		x = 100*column;
+            		y = 100*row;
+            		g.setColor(Color.WHITE);
+           			g.fillRect(x+1, y+1, 99, 99);
+        			
+        			if(board[column][row2] == 'x') {
         				g.setColor(Color.RED);
         				g.fillOval(x, y, 100, 100);
         			}
-        			else if(board[column][row] == 'o') {
+        			else if(board[column][row2] == 'o') {
         				g.setColor(Color.YELLOW);
         				g.fillOval(x, y, 100, 100);
         			}
         		}
+        		row2--;
+        		
     		}
+    		
     	}
     }
     
