@@ -19,12 +19,10 @@ public class Controller {
 		Model game = new Model();
 		game.newGame();
 		char turn = game.turn();
+		display.setBoard(game.returnBoard());
 		
 		// Display the current board
-		if (viewChoice == 1) {
-			display.drawTextBoard();
-			
-		} else {
+		if (viewChoice == 2) {
 			display.drawWindow();
 		}
 		
